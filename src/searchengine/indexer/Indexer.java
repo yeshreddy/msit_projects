@@ -46,7 +46,7 @@ public class Indexer implements IndexerInterface,Serializable
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
 	/** The constructor for ListWebIndex.
 	 */
@@ -94,7 +94,7 @@ public class Indexer implements IndexerInterface,Serializable
 		
 		
 		
-		index.insert(keywords, url);
+		mh.insert(keywords, url);
 		
 		
 		
@@ -126,15 +126,20 @@ public class Indexer implements IndexerInterface,Serializable
 	    ///////////////////////////////////////////////////////////////////
 		
 		//System.out.println(index.getValue(keyword));
-		//System.out.println(keyword.toString());
+		//System.out.println("retriving starts"+keyword.toString());
 		Vector<Object> vec = new Vector<Object>();
 		ArrayList<Object> valu  = new ArrayList<Object>();
 		
 		String keywor=keyword.toString();
+                
 		valu=mh.getValue(keywor);
+                
 		
 		if(valu==null)
-			return null;
+                {  
+                    System.out.println("null values");
+                    return null;
+                }
 		for(int i=0;i<valu.size();i++)
 		{
 			
@@ -183,6 +188,7 @@ public class Indexer implements IndexerInterface,Serializable
 			//vecnod temp=new vecnod();
 			
 			PageWord p=new PageWord(te.get(i));
+                        //System.out.println("page word is "+p+"and it's size is "+p.toString().length());
 			String s = te.get(i);
 			
 			itrr=(ObjectIterator<Object>)this.retrievePages(p);
@@ -194,7 +200,7 @@ public class Indexer implements IndexerInterface,Serializable
 			tem=(Vector<Object>) itrr.returnVec();
 			
 			ArrayList<Integer> fre=mh.getfreq(s);
-			//System.out.println(mh.getfreq(s));
+			//System.out.println("mh freq"+mh.getfreq(s));
 			int j=0;
 			while(j<fre.size())
 			{
@@ -228,8 +234,9 @@ public class Indexer implements IndexerInterface,Serializable
 	{
 		
 		MyHashDictionary obj = new MyHashDictionary();
-		obj = (MyHashDictionary) index;
+		obj = (MyHashDictionary) mh;
 		ObjectOutputStream os=new ObjectOutputStream(stream);
+                //System.out.println("currently saving mh size "+obj.getKeys().length);
 		os.writeObject(obj);
 		os.close();
 		
@@ -259,7 +266,7 @@ public class Indexer implements IndexerInterface,Serializable
 			
 			try {
 				mh=(MyHashDictionary) is.readObject();
-				
+				 //System.out.println("mh size "+mh.getKeys().length);
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

@@ -12,6 +12,7 @@ package searchengine.spider;
 
 
 import java.io.*;
+import java.util.Scanner;
 import java.net.URL;
 import java.util.Vector;
 
@@ -36,11 +37,12 @@ public class CrawlerDriver
 
 			BreadthFirstSpider web = null;
 			//PriorityBasedSpider web=null;
-
-			if (args.length >= 2) {
+                       Scanner sc=new Scanner(System.in); 
+			if (true) {
 				// Create a web crawler
-				u = new URL(args[0]);
-				String indexMode = args[2];
+                             System.out.println("Enter the url, where you want to start indexing");
+				u = new URL(sc.nextLine());
+				String indexMode ="myhash" ;
 				indexMode = indexMode.toLowerCase();
 				
 				// hash - Dictionary Structure based on a Hashtable or HashMap from the Java collections 
@@ -60,7 +62,7 @@ public class CrawlerDriver
 				}
 
 				// Open the index save file
-				isaveFile = new FileOutputStream(args[1]);
+				isaveFile = new FileOutputStream("foo.txt");
 
 			}
 			else 
@@ -70,30 +72,30 @@ public class CrawlerDriver
 			}
 
 			// Check for a page limit
-			if (args.length > 3)
-				web.crawlLimitDefault = Integer.parseInt(args[3]);
+			
+				web.crawlLimitDefault = Integer.parseInt("10");
 
 			// Crawl the web site
 			Indexer index = web.crawl();
+		                  //System.out.println("index"+index.);
 			//index.disp();
 			
 			
-			
 			ObjectIterator<Object> itr;
-			PageWord p=new PageWord("off");
+			PageWord p=new PageWord("msitprogram");
 			System.out.println("search results");
 			index.save(isaveFile);
-			
+			index.disp();
 			itr=(ObjectIterator<Object>) index.retrievePages(p);
 			Vector<Object> te = new Vector<Object>();
-			/*te=itr.returnVec();
+			//te=itr.returnVec();
 			
-			for(int i=0;i<te.size();i++)
-			{
+			//for(int i=0;i<te.size();i++)
+			//{
 				
 				
-				System.out.println(te.get(i));
-			}*/
+			//	System.out.println(te.get(i));
+			//}
 				
 			// Save the index to the specified file
 			

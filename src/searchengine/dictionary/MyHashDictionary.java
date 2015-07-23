@@ -71,7 +71,7 @@ public class MyHashDictionary implements DictionaryInterface, Serializable {
 		{
 		     if(temp.key.compareTo(str)==0)
 		     {
-		    	 //System.out.println("frequency"+temp.freq);
+		    	 System.out.println("frequency"+temp.freq);
 		    	 return temp.value;
 		     }
 		     temp=temp.next;

@@ -67,6 +67,8 @@ public class BreadthFirstSpider implements SpiderInterface {
 		u=q.dequeue();
 		
 		count++;
+                //System.out.println("count "+count );
+                //System.out.println("url: "+u);
 		URLTextReader in = new URLTextReader(u);
 		PageLexer<PageElementInterface> elts = new PageLexer<PageElementInterface>(in, u);
 		while (elts.hasNext()) 
@@ -87,7 +89,7 @@ public class BreadthFirstSpider implements SpiderInterface {
 				if((r.isexist(t) && (!elt.toString().contains("#"))) || count==1 )
 				{
 					//ystem.out.println(u);
-				    //System.out.println("sarath");
+				    
 					q.enqueue(t);
 					r.enqueue(t);
 					num++;
@@ -105,6 +107,7 @@ public class BreadthFirstSpider implements SpiderInterface {
 				if(!(elt.toString().compareTo("  ")==0))
 					//System.out.println(u+" "+elt.toString());
 				i.addPage(u,elt.toString());
+                                //i.disp();
 				
 			}
 			
@@ -125,7 +128,7 @@ public class BreadthFirstSpider implements SpiderInterface {
 	   }
 	   }
 	   //System.out.println(count);
-	   
+	   //i.disp();
 	   return i;
 	   
 	}

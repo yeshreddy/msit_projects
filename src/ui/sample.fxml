@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UifxmlController">
+   <children>
+      <Label fx:id="mysearchengine" layoutX="43.0" layoutY="25.0" prefHeight="52.0" prefWidth="251.0" text="My Search Engine " />
+      <TextField fx:id="searchfield" layoutX="43.0" layoutY="90.0" prefHeight="25.0" prefWidth="431.0" promptText="Search" />
+      <TextArea fx:id="searchresult" editable="false" layoutX="43.0" layoutY="154.0" prefHeight="200.0" prefWidth="537.0" promptText="Results displayed here" />
+      <Button fx:id="searchbutton" layoutX="484.0" layoutY="90.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="95.0" text="Search" />
+   </children>
+</Pane>
